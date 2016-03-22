@@ -79,6 +79,11 @@ p + theme(axis.title = element_text(size = 18),
 
 **1. Use as variáveis “dap” e “talhao” para construir dois gráficos, colocando-os lado a lado. O primeiro deve ser um gráfico de desenho de caixa (boxplot) da variável “dap” em função do fator “talhão”. O segundo deve ter apenas a média e uma barra de desvio-padrão do dap, para cada talhão.**
    
+Dica: vocês terão que calcular a média e os desvios-padrão do dap das árvores em cada talhão. Depois crie uma matriz com estes valores e crie o plot destes valores.
+	
+*Com o ggplot2, não é necessário pré-computar a média e o desvio padrão, `stat_summary` faz isso pra você!*
+*Mas no gráfico `p_media_desvio` é necessário ter o pacote `Hmisc` instalado para usar a função `mean_sdl`.*
+
 ```{r fig.width = 10, fig.height = 6}
 p_box <- 
   ggplot(esaligna, aes(factor(talhao), dap)) +
@@ -114,15 +119,9 @@ print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
 print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 ```
 
-Dica: vocês terão que calcular a média e os desvios-padrão do dap das árvores em cada talhão. Depois crie uma matriz com estes valores e crie o plot destes valores.
-	
-*Com o ggplot2, não é necessário pré-computar a média e o desvio padrão, `stat_summary` faz isso pra você!*
-*Mas no gráfico `p_media_desvio` é necessário ter o pacote `Hmisc` instalado para usar a função `mean_sdl`.*
-
 ### 5.3 Adivinhando o código
 
 **Leia os dados [deste arquivo](http://ecologia.ib.usp.br/bie5782/lib/exe/fetch.php?media=bie5782:01_curso2009:material:exercicio3.csv) e usando as variáveis `x1` e `y1` e `x2` e `y2` tente reproduzir esta figura:**
-
 
 ```{r fig.width = 10, fig.height = 6, message=FALSE, warning=FALSE}
 dat <- read.csv("http://ecologia.ib.usp.br/bie5782/lib/exe/fetch.php?media=bie5782:01_curso2009:material:exercicio3.csv")

@@ -83,6 +83,15 @@ caixa (boxplot) da variável “dap” em função do fator “talhão”. O seg
 deve ter apenas a média e uma barra de desvio-padrão do dap, para cada
 talhão.**
 
+Dica: vocês terão que calcular a média e os desvios-padrão do dap das
+árvores em cada talhão. Depois crie uma matriz com estes valores e crie
+o plot destes valores.
+
+*Com o ggplot2, não é necessário pré-computar a média e o desvio padrão,
+`stat_summary` faz isso pra você!* *Mas no gráfico `p_media_desvio` é
+necessário ter o pacote `Hmisc` instalado para usar a função
+`mean_sdl`.*
+
     p_box <- 
       ggplot(esaligna, aes(factor(talhao), dap)) +
       geom_boxplot() +
@@ -118,15 +127,6 @@ talhão.**
     print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 
 ![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-9-1.png)
-
-Dica: vocês terão que calcular a média e os desvios-padrão do dap das
-árvores em cada talhão. Depois crie uma matriz com estes valores e crie
-o plot destes valores.
-
-*Com o ggplot2, não é necessário pré-computar a média e o desvio padrão,
-`stat_summary` faz isso pra você!* *Mas no gráfico `p_media_desvio` é
-necessário ter o pacote `Hmisc` instalado para usar a função
-`mean_sdl`.*
 
 ### 5.3 Adivinhando o código
 
