@@ -1,3 +1,6 @@
+Resolução do exercicio 5 *gráficos* do curso de R da Ecologia USP com
+`ggplot2`.
+
     library(ggplot2)
     library(grid)
 
@@ -12,16 +15,16 @@ construa os seguintes gráficos:
 
     str(esaligna)
 
-    ## 'data.frame':    36 obs. of  9 variables:
-    ##  $ arvore: int  6 8 7 8 9 9 1 2 1 2 ...
-    ##  $ classe: Factor w/ 4 levels "a","b","c","d": 3 2 3 1 1 2 3 3 1 1 ...
-    ##  $ talhao: int  22 23 32 32 32 32 22 22 22 23 ...
-    ##  $ dap   : num  19.9 12.4 16.5 9 7 10.5 13 20 7 6.3 ...
-    ##  $ ht    : num  21.5 15.74 11.74 7.72 6.55 ...
-    ##  $ tronco: num  183.6 42.3 60.6 12.3 11.9 ...
-    ##  $ sobra : num  20.42 6.58 11.35 9.99 7.97 ...
-    ##  $ folha : num  8.57 2.52 48.52 27.67 7.76 ...
-    ##  $ total : num  212.6 51.4 120.5 50 27.6 ...
+    'data.frame':   36 obs. of  9 variables:
+     $ arvore: int  6 8 7 8 9 9 1 2 1 2 ...
+     $ classe: Factor w/ 4 levels "a","b","c","d": 3 2 3 1 1 2 3 3 1 1 ...
+     $ talhao: int  22 23 32 32 32 32 22 22 22 23 ...
+     $ dap   : num  19.9 12.4 16.5 9 7 10.5 13 20 7 6.3 ...
+     $ ht    : num  21.5 15.74 11.74 7.72 6.55 ...
+     $ tronco: num  183.6 42.3 60.6 12.3 11.9 ...
+     $ sobra : num  20.42 6.58 11.35 9.99 7.97 ...
+     $ folha : num  8.57 2.52 48.52 27.67 7.76 ...
+     $ total : num  212.6 51.4 120.5 50 27.6 ...
 
 ### 5.1 Editando alguns parâmetros gráficos
 
@@ -29,60 +32,41 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
 
 1.  Legendas dos eixos com nomes das variáveis e suas unidades
 
-<!-- -->
+\`\`\`r p \<- ggplot(esaligna, aes(x = dap, y = ht)) + geom\_point() +
+xlab("diâmetro na altura do peito (cm)") + ylab("altura do tronco (m)")
 
-    p <- ggplot(esaligna, aes(x = dap, y = ht)) + 
-      geom_point() +
-      xlab("diâmetro na altura do peito (cm)") +
-      ylab("altura do tronco (m)")
-
-    p
+p \`\`\`
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-3-1.png" title="" alt="" style="display: block; margin: auto;" />
 
 1.  Marcações do eixos (ticks) para dentro da área do gráfico
 
-<!-- -->
-
-    p + 
-      theme_bw() + 
-      theme(axis.ticks.length=unit(-8, "points"), 
-            axis.text.x = element_text(margin = margin(t = 10)),
-            axis.text.y = element_text(margin = margin(r = 10)))
+`r   p +      theme_bw() +      theme(axis.ticks.length=unit(-8, "points"),            axis.text.x = element_text(margin = margin(t = 10)),           axis.text.y = element_text(margin = margin(r = 10)))`
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-4-1.png" title="" alt="" style="display: block; margin: auto;" />
 
 1.  Apenas dois eixos (formato “L”)
 
-<!-- -->
+\`\`\`r p \<- p + theme\_bw() + theme\_classic() +
+theme(axis.ticks.length=unit(-8, "points"), axis.text.x =
+element\_text(margin = margin(t = 10)), axis.text.y =
+element\_text(margin = margin(r = 10)))
 
-    p <- p + 
-      theme_bw() + 
-      theme_classic() +
-      theme(axis.ticks.length=unit(-8, "points"), 
-            axis.text.x = element_text(margin = margin(t = 10)),
-            axis.text.y = element_text(margin = margin(r = 10)))
-
-    p
+p \`\`\`
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-5-1.png" title="" alt="" style="display: block; margin: auto;" />
 
 1.  Título informativo
 
-<!-- -->
+\`\`\`r p \<- p + labs(title = "Relação entre dap e altura do tronco")
 
-    p <- p + labs(title = "Relação entre dap e altura do tronco")
-
-    p
+p \`\`\`
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-6-1.png" title="" alt="" style="display: block; margin: auto;" />
 
 1.  Tamanho das fontes maiores que o padrão
 
-<!-- -->
-
-    p + theme(axis.title = element_text(size = 18),
-              axis.text = element_text(size = 14))
+`r   p + theme(axis.title = element_text(size = 18),             axis.text = element_text(size = 14))`
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-7-1.png" title="" alt="" style="display: block; margin: auto;" />
 
@@ -94,43 +78,34 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
     segundo deve ter apenas a média e uma barra de desvio-padrão do dap,
     para cada talhão.
 
-<!-- -->
+\`\`\`r p\_box \<- ggplot(esaligna, aes(factor(talhao), dap)) +
+geom\_boxplot() + xlab("talhao")
 
-    p_box <- 
-      ggplot(esaligna, aes(factor(talhao), dap)) +
-      geom_boxplot() +
-      xlab("talhao")
-      
-    p_media_desvio <-
-      ggplot(esaligna, aes(factor(talhao), dap)) + 
-      stat_summary(fun.y = "mean", geom = "point", size = 5) +
-      stat_summary(fun.data = "mean_sdl", geom = "errorbar", width = 0.5) +
-      xlab("talhao")
+p\_media\_desvio \<- ggplot(esaligna, aes(factor(talhao), dap)) +
+stat\_summary(fun.y = "mean", geom = "point", size = 5) +
+stat\_summary(fun.data = "mean\_sdl", geom = "errorbar", width = 0.5) +
+xlab("talhao")
 
-    pushViewport(viewport(layout = grid.layout(1, 2)))
-    print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
-    print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+pushViewport(viewport(layout = grid.layout(1, 2))) print(p\_box, vp =
+viewport(layout.pos.row = 1, layout.pos.col = 1))
+print(p\_media\_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col
+= 2)) \`\`\`
 
 ![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
 1.  Insira também uma letra para dizer qual é o gráfico “a” e qual é o
     “b” (tanto faz, quem é um e quem é outro).
 
-<!-- -->
+\`\`\`r p\_box \<- p\_box + labs(title = "a)") + theme(plot.title =
+element\_text(hjust = 0))
 
-    p_box <-
-      p_box + 
-      labs(title = "a)") + 
-      theme(plot.title = element_text(hjust = 0))
+p\_media\_desvio \<- p\_media\_desvio + labs(title = "b)") +
+theme(plot.title = element\_text(hjust = 0))
 
-    p_media_desvio <-
-      p_media_desvio + 
-      labs(title = "b)") + 
-      theme(plot.title = element_text(hjust = 0))
-
-    pushViewport(viewport(layout = grid.layout(1, 2)))
-    print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
-    print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+pushViewport(viewport(layout = grid.layout(1, 2))) print(p\_box, vp =
+viewport(layout.pos.row = 1, layout.pos.col = 1))
+print(p\_media\_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col
+= 2)) \`\`\`
 
 ![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 

@@ -7,6 +7,8 @@ output:
     variant: github_markdown
 ---
 
+Resolução do exercicio 5 _gráficos_ do curso de R da Ecologia USP com `ggplot2`.
+
 ```{r message=FALSE}
 library(ggplot2)
 library(grid)
@@ -15,7 +17,7 @@ library(grid)
 Usando o [conjunto de dados Conjunto de Dados: Dados de Biomassa de Árvores de _Eucalyptus saligna_](http://ecologia.ib.usp.br/bie5782/doku.php?id=dados:dados-esaligna), construa os seguintes gráficos: 
 
 #### Ler o dado no R:
-```{r}
+```{r comment=''}
 esaligna <- read.csv("http://ecologia.ib.usp.br/bie5782/lib/exe/fetch.php?media=dados:esaligna.csv")
 
 str(esaligna)
@@ -27,92 +29,92 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
 
 1. Legendas dos eixos com nomes das variáveis e suas unidades
 
-```{r fig.align='center'}
-p <- ggplot(esaligna, aes(x = dap, y = ht)) + 
-  geom_point() +
-  xlab("diâmetro na altura do peito (cm)") +
-  ylab("altura do tronco (m)")
-
-p
-```
+  ```{r fig.align='center'}
+  p <- ggplot(esaligna, aes(x = dap, y = ht)) + 
+    geom_point() +
+    xlab("diâmetro na altura do peito (cm)") +
+    ylab("altura do tronco (m)")
+  
+  p
+  ```
 
 2. Marcações do eixos (ticks) para dentro da área do gráfico
 
-```{r fig.align='center'}
-p + 
-  theme_bw() + 
-  theme(axis.ticks.length=unit(-8, "points"), 
-        axis.text.x = element_text(margin = margin(t = 10)),
-        axis.text.y = element_text(margin = margin(r = 10)))
-
-```
+  ```{r fig.align='center'}
+  p + 
+    theme_bw() + 
+    theme(axis.ticks.length=unit(-8, "points"), 
+          axis.text.x = element_text(margin = margin(t = 10)),
+          axis.text.y = element_text(margin = margin(r = 10)))
+  
+  ```
 
 3. Apenas dois eixos (formato “L”)
 
-```{r fig.align='center'}
-p <- p + 
-  theme_bw() + 
-  theme_classic() +
-  theme(axis.ticks.length=unit(-8, "points"), 
-        axis.text.x = element_text(margin = margin(t = 10)),
-        axis.text.y = element_text(margin = margin(r = 10)))
-
-p
-```
+  ```{r fig.align='center'}
+  p <- p + 
+    theme_bw() + 
+    theme_classic() +
+    theme(axis.ticks.length=unit(-8, "points"), 
+          axis.text.x = element_text(margin = margin(t = 10)),
+          axis.text.y = element_text(margin = margin(r = 10)))
+  
+  p
+  ```
 
 4. Título informativo
 
-```{r fig.align='center'}
-p <- p + labs(title = "Relação entre dap e altura do tronco")
-
-p
-```
+  ```{r fig.align='center'}
+  p <- p + labs(title = "Relação entre dap e altura do tronco")
+  
+  p
+  ```
 
 5. Tamanho das fontes maiores que o padrão
 
-```{r fig.align='center'}
-p + theme(axis.title = element_text(size = 18),
-          axis.text = element_text(size = 14))
-```
+  ```{r fig.align='center'}
+  p + theme(axis.title = element_text(size = 18),
+            axis.text = element_text(size = 14))
+  ```
 
 ### Dois gráficos juntos
 
 1. Use as variáveis “dap” e “talhao” para construir dois gráficos, colocando-os lado a lado. O primeiro deve ser um gráfico de desenho de caixa (boxplot) da variável “dap” em função do fator “talhão”. O segundo deve ter apenas a média e uma barra de desvio-padrão do dap, para cada talhão. 
    
-```{r fig.width = 10, fig.height = 6}
-p_box <- 
-  ggplot(esaligna, aes(factor(talhao), dap)) +
-  geom_boxplot() +
-  xlab("talhao")
+  ```{r fig.width = 10, fig.height = 6}
+  p_box <- 
+    ggplot(esaligna, aes(factor(talhao), dap)) +
+    geom_boxplot() +
+    xlab("talhao")
+    
+  p_media_desvio <-
+    ggplot(esaligna, aes(factor(talhao), dap)) + 
+    stat_summary(fun.y = "mean", geom = "point", size = 5) +
+    stat_summary(fun.data = "mean_sdl", geom = "errorbar", width = 0.5) +
+    xlab("talhao")
   
-p_media_desvio <-
-  ggplot(esaligna, aes(factor(talhao), dap)) + 
-  stat_summary(fun.y = "mean", geom = "point", size = 5) +
-  stat_summary(fun.data = "mean_sdl", geom = "errorbar", width = 0.5) +
-  xlab("talhao")
-
-pushViewport(viewport(layout = grid.layout(1, 2)))
-print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
-print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
-``` 
+  pushViewport(viewport(layout = grid.layout(1, 2)))
+  print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
+  print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+  ``` 
 
 2. Insira também uma letra para dizer qual é o gráfico “a” e qual é o “b” (tanto faz, quem é um e quem é outro).
 
-```{r fig.width = 10, fig.height = 6}
-p_box <-
-  p_box + 
-  labs(title = "a)") + 
-  theme(plot.title = element_text(hjust = 0))
-
-p_media_desvio <-
-  p_media_desvio + 
-  labs(title = "b)") + 
-  theme(plot.title = element_text(hjust = 0))
-
-pushViewport(viewport(layout = grid.layout(1, 2)))
-print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
-print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
-```
+  ```{r fig.width = 10, fig.height = 6}
+  p_box <-
+    p_box + 
+    labs(title = "a)") + 
+    theme(plot.title = element_text(hjust = 0))
+  
+  p_media_desvio <-
+    p_media_desvio + 
+    labs(title = "b)") + 
+    theme(plot.title = element_text(hjust = 0))
+  
+  pushViewport(viewport(layout = grid.layout(1, 2)))
+  print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
+  print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+  ```
 
 Dica: vocês terão que calcular a média e os desvios-padrão do dap das árvores em cada talhão. Depois crie uma matriz com estes valores e crie o plot destes valores.
 	
