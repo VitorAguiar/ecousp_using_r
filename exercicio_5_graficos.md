@@ -28,10 +28,10 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
 
 **1. Legendas dos eixos com nomes das variáveis e suas unidades**
 
-    p <- ggplot(esaligna, aes(x = dap, y = ht)) + 
+    p <- 
+      ggplot(esaligna, aes(x = dap, y = ht)) + 
       geom_point() +
-      xlab("diâmetro na altura do peito (cm)") +
-      ylab("altura do tronco (m)")
+      labs(x = "diâmetro na altura do peito (cm)", y = "altura do tronco (m)")
 
     p
 
@@ -42,8 +42,8 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
     p + 
       theme_bw() + 
       theme(axis.ticks.length=unit(-8, "points"), 
-        axis.text.x = element_text(margin = margin(t = 10)),
-        axis.text.y = element_text(margin = margin(r = 10)))
+            axis.text.x = element_text(margin = margin(t = 10)),
+            axis.text.y = element_text(margin = margin(r = 10)))
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-4-1.png" title="" alt="" style="display: block; margin: auto;" />
 
@@ -53,8 +53,8 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
       theme_bw() + 
       theme_classic() +
       theme(axis.ticks.length=unit(-8, "points"), 
-        axis.text.x = element_text(margin = margin(t = 10)),
-        axis.text.y = element_text(margin = margin(r = 10)))
+            axis.text.x = element_text(margin = margin(t = 10)),
+            axis.text.y = element_text(margin = margin(r = 10)))
 
     p
 
