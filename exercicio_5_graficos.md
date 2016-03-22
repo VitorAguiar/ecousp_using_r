@@ -52,7 +52,7 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
     p <- p + 
       theme_bw() + 
       theme_classic() +
-      theme(axis.ticks.length=unit(-8, "points"), 
+      theme(axis.ticks.length = unit(-8, "points"), 
             axis.text.x = element_text(margin = margin(t = 10)),
             axis.text.y = element_text(margin = margin(r = 10)))
 
