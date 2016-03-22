@@ -71,7 +71,7 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
 **5. Tamanho das fontes maiores que o padrão**
 
     p + theme(axis.title = element_text(size = 18),
-          axis.text = element_text(size = 14))
+              axis.text = element_text(size = 14))
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-7-1.png" title="" alt="" style="display: block; margin: auto;" />
 
@@ -124,7 +124,8 @@ Dica: vocês terão que calcular a média e os desvios-padrão do dap das
 o plot destes valores.
 
 *Com o ggplot2, não é necessário pré-computar a média e o desvio padrão,
-`stat_summary` faz isso pra você!*
+`stat_summary` faz isso pra você!* *Mas no gráfico `p_media_desvio` é
+necessário ter o pacote `Hmisc` instalado para usar a função `mean_sdl`*
 
 ### 5.3 Adivinhando o código
 
