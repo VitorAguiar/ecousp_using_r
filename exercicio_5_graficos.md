@@ -1,5 +1,4 @@
-Usando o [conjunto de dados Conjunto de Dados: Dados de Biomassa de
-Árvores de *Eucalyptus
+Usando o [Conjunto de Dados: Dados de Biomassa de Árvores de *Eucalyptus
 saligna*](http://ecologia.ib.usp.br/bie5782/doku.php?id=dados:dados-esaligna),
 construa os seguintes gráficos:
 
