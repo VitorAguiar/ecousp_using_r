@@ -1,9 +1,3 @@
-Resolução do exercicio 5 *gráficos* do curso de R da Ecologia USP com
-`ggplot2`.
-
-    library(ggplot2)
-    library(grid)
-
 Usando o [conjunto de dados Conjunto de Dados: Dados de Biomassa de
 Árvores de *Eucalyptus
 saligna*](http://ecologia.ib.usp.br/bie5782/doku.php?id=dados:dados-esaligna),
@@ -27,6 +21,9 @@ construa os seguintes gráficos:
      $ total : num  212.6 51.4 120.5 50 27.6 ...
 
 ### 5.1 Editando alguns parâmetros gráficos
+
+    library(ggplot2)
+    library(grid)
 
 Crie um gráfico de dispersão entre `dap` e `ht` com:
 

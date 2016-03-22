@@ -7,13 +7,6 @@ output:
     variant: github_markdown
 ---
 
-Resolução do exercicio 5 _gráficos_ do curso de R da Ecologia USP com `ggplot2`.
-
-```{r message=FALSE}
-library(ggplot2)
-library(grid)
-```
-
 Usando o [conjunto de dados Conjunto de Dados: Dados de Biomassa de Árvores de _Eucalyptus saligna_](http://ecologia.ib.usp.br/bie5782/doku.php?id=dados:dados-esaligna), construa os seguintes gráficos: 
 
 #### Ler o dado no R:
@@ -24,6 +17,11 @@ str(esaligna)
 ```
 
 ### 5.1 Editando alguns parâmetros gráficos
+
+```{r message=FALSE}
+library(ggplot2)
+library(grid)
+```
 
 Crie um gráfico de dispersão entre `dap` e `ht` com:
 
