@@ -145,7 +145,7 @@ figura:**
       ylab("Euclidean distances") + 
       labs(title = "a") + 
       theme_classic() +
-      theme(plot.title = element_text(hjust = .99, vjust = -1.5, size = 20)) +
+      theme(plot.title = element_text(hjust = .99, size = 20)) +
       coord_cartesian(ylim = c(0, 3))
 
     p_b <- 
@@ -157,7 +157,7 @@ figura:**
       labs(title = "b") +
       theme_classic() +
       theme(axis.title = element_blank(), 
-            plot.title = element_text(hjust = .99, vjust = -1.5, size = 20)) +
+            plot.title = element_text(hjust = .99, size = 20)) +
       coord_cartesian(ylim = c(0 ,3)) +
       annotate("text", x = 1:6, y = 2.9, label = c("*", "*", "**", "*", "***", ""), 
                size = 12) 
