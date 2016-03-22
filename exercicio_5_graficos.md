@@ -125,7 +125,8 @@ o plot destes valores.
 
 *Com o ggplot2, não é necessário pré-computar a média e o desvio padrão,
 `stat_summary` faz isso pra você!* *Mas no gráfico `p_media_desvio` é
-necessário ter o pacote `Hmisc` instalado para usar a função `mean_sdl`*
+necessário ter o pacote `Hmisc` instalado para usar a função
+`mean_sdl`.*
 
 ### 5.3 Adivinhando o código
 
