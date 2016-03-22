@@ -30,82 +30,96 @@ construa os seguintes gráficos:
 
 Crie um gráfico de dispersão entre `dap` e `ht` com:
 
-1.  Legendas dos eixos com nomes das variáveis e suas unidades
+**1. Legendas dos eixos com nomes das variáveis e suas unidades**
 
-\`\`\`r p \<- ggplot(esaligna, aes(x = dap, y = ht)) + geom\_point() +
-xlab("diâmetro na altura do peito (cm)") + ylab("altura do tronco (m)")
+    p <- ggplot(esaligna, aes(x = dap, y = ht)) + 
+      geom_point() +
+      xlab("diâmetro na altura do peito (cm)") +
+      ylab("altura do tronco (m)")
 
-p \`\`\`
+    p
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-3-1.png" title="" alt="" style="display: block; margin: auto;" />
 
-1.  Marcações do eixos (ticks) para dentro da área do gráfico
+**2. Marcações do eixos (ticks) para dentro da área do gráfico**
 
-`r   p +      theme_bw() +      theme(axis.ticks.length=unit(-8, "points"),            axis.text.x = element_text(margin = margin(t = 10)),           axis.text.y = element_text(margin = margin(r = 10)))`
+    p + 
+      theme_bw() + 
+      theme(axis.ticks.length=unit(-8, "points"), 
+        axis.text.x = element_text(margin = margin(t = 10)),
+        axis.text.y = element_text(margin = margin(r = 10)))
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-4-1.png" title="" alt="" style="display: block; margin: auto;" />
 
-1.  Apenas dois eixos (formato “L”)
+**3. Apenas dois eixos (formato “L”)**
 
-\`\`\`r p \<- p + theme\_bw() + theme\_classic() +
-theme(axis.ticks.length=unit(-8, "points"), axis.text.x =
-element\_text(margin = margin(t = 10)), axis.text.y =
-element\_text(margin = margin(r = 10)))
+    p <- p + 
+      theme_bw() + 
+      theme_classic() +
+      theme(axis.ticks.length=unit(-8, "points"), 
+        axis.text.x = element_text(margin = margin(t = 10)),
+        axis.text.y = element_text(margin = margin(r = 10)))
 
-p \`\`\`
+    p
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-5-1.png" title="" alt="" style="display: block; margin: auto;" />
 
-1.  Título informativo
+**4. Título informativo**
 
-\`\`\`r p \<- p + labs(title = "Relação entre dap e altura do tronco")
+    p <- p + labs(title = "Relação entre dap e altura do tronco")
 
-p \`\`\`
+    p
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-6-1.png" title="" alt="" style="display: block; margin: auto;" />
 
-1.  Tamanho das fontes maiores que o padrão
+**5. Tamanho das fontes maiores que o padrão**
 
-`r   p + theme(axis.title = element_text(size = 18),             axis.text = element_text(size = 14))`
+    p + theme(axis.title = element_text(size = 18),
+          axis.text = element_text(size = 14))
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-7-1.png" title="" alt="" style="display: block; margin: auto;" />
 
 ### Dois gráficos juntos
 
-1.  Use as variáveis “dap” e “talhao” para construir dois gráficos,
-    colocando-os lado a lado. O primeiro deve ser um gráfico de desenho
-    de caixa (boxplot) da variável “dap” em função do fator “talhão”. O
-    segundo deve ter apenas a média e uma barra de desvio-padrão do dap,
-    para cada talhão.
+**1. Use as variáveis “dap” e “talhao” para construir dois gráficos,
+colocando-os lado a lado. O primeiro deve ser um gráfico de desenho de
+caixa (boxplot) da variável “dap” em função do fator “talhão”. O segundo
+deve ter apenas a média e uma barra de desvio-padrão do dap, para cada
+talhão.**
 
-\`\`\`r p\_box \<- ggplot(esaligna, aes(factor(talhao), dap)) +
-geom\_boxplot() + xlab("talhao")
+    p_box <- 
+      ggplot(esaligna, aes(factor(talhao), dap)) +
+      geom_boxplot() +
+      xlab("talhao")
+      
+    p_media_desvio <-
+      ggplot(esaligna, aes(factor(talhao), dap)) + 
+      stat_summary(fun.y = "mean", geom = "point", size = 5) +
+      stat_summary(fun.data = "mean_sdl", geom = "errorbar", width = 0.5) +
+      xlab("talhao")
 
-p\_media\_desvio \<- ggplot(esaligna, aes(factor(talhao), dap)) +
-stat\_summary(fun.y = "mean", geom = "point", size = 5) +
-stat\_summary(fun.data = "mean\_sdl", geom = "errorbar", width = 0.5) +
-xlab("talhao")
-
-pushViewport(viewport(layout = grid.layout(1, 2))) print(p\_box, vp =
-viewport(layout.pos.row = 1, layout.pos.col = 1))
-print(p\_media\_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col
-= 2)) \`\`\`
+    pushViewport(viewport(layout = grid.layout(1, 2)))
+    print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
+    print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 
 ![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
-1.  Insira também uma letra para dizer qual é o gráfico “a” e qual é o
-    “b” (tanto faz, quem é um e quem é outro).
+**2. Insira também uma letra para dizer qual é o gráfico “a” e qual é o
+“b” (tanto faz, quem é um e quem é outro).**
 
-\`\`\`r p\_box \<- p\_box + labs(title = "a)") + theme(plot.title =
-element\_text(hjust = 0))
+    p_box <-
+      p_box + 
+      labs(title = "a)") + 
+      theme(plot.title = element_text(hjust = 0))
 
-p\_media\_desvio \<- p\_media\_desvio + labs(title = "b)") +
-theme(plot.title = element\_text(hjust = 0))
+    p_media_desvio <-
+      p_media_desvio + 
+      labs(title = "b)") + 
+      theme(plot.title = element_text(hjust = 0))
 
-pushViewport(viewport(layout = grid.layout(1, 2))) print(p\_box, vp =
-viewport(layout.pos.row = 1, layout.pos.col = 1))
-print(p\_media\_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col
-= 2)) \`\`\`
+    pushViewport(viewport(layout = grid.layout(1, 2)))
+    print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
+    print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 
 ![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
@@ -118,10 +132,10 @@ o plot destes valores.
 
 ### 5.3 Adivinhando o código
 
-Leia os dados [deste
+**Leia os dados [deste
 arquivo](http://ecologia.ib.usp.br/bie5782/lib/exe/fetch.php?media=bie5782:01_curso2009:material:exercicio3.csv)
 e usando as variáveis `x1` e `y1` e `x2` e `y2` tente reproduzir esta
-figura:
+figura:**
 
     dat <- read.csv("http://ecologia.ib.usp.br/bie5782/lib/exe/fetch.php?media=bie5782:01_curso2009:material:exercicio3.csv")
 
