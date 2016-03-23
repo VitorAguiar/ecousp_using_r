@@ -49,6 +49,10 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
             axis.text.x = element_text(margin = margin(t = 10)),
             axis.text.y = element_text(margin = margin(r = 10)))
 
+    p
+
+<img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-4-1.png" title="" alt="" style="display: block; margin: auto;" />
+
 **3. Apenas dois eixos (formato “L”)**
 
     # there's a bug in theme_classic in ggplot2 2.1. Workaround:

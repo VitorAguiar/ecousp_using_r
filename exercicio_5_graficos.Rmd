@@ -48,6 +48,7 @@ p <-
         axis.text.x = element_text(margin = margin(t = 10)),
         axis.text.y = element_text(margin = margin(r = 10)))
 
+p
 ```
 
 **3. Apenas dois eixos (formato “L”)**
