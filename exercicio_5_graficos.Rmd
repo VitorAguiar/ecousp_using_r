@@ -58,6 +58,7 @@ p
 
 p <- p + 
   theme(panel.border= element_blank(),
+        panel.grid = element_blank(),
         axis.line.x = element_line(),
         axis.line.y = element_line())
 
@@ -110,13 +111,11 @@ print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 ```{r fig.width = 10, fig.height = 6}
 p_box <-
   p_box + 
-  labs(title = "a)") + 
-  theme(plot.title = element_text(hjust = 0))
+  labs(title = "a)")
 
 p_media_desvio <-
   p_media_desvio + 
-  labs(title = "b)") + 
-  theme(plot.title = element_text(hjust = 0))
+  labs(title = "b)") 
 
 pushViewport(viewport(layout = grid.layout(1, 2)))
 print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
@@ -134,10 +133,15 @@ p_a <-
   ggplot(data = dat, aes(x1, y1)) + 
   geom_point(size = 3, shape = 17) + 
   geom_smooth(method = lm, se = FALSE, color = "black") +
+  scale_x_continuous(breaks = seq(.5, 2, .5), limits = c(0.5, 2.5)) +
+  scale_y_continuous(breaks = seq(0, 3, .5), limits = c(0, 3)) +
   labs(title = "a", x = "Log(Patch size)(ha)", y = "Euclidean distances") + 
-  theme_classic() +
-  theme(plot.title = element_text(hjust = .99, size = 20)) +
-  coord_cartesian(ylim = c(0, 3))
+  theme_bw() +
+  theme(plot.title = element_text(hjust = .99, size = 20, margin = margin(b = -20)),
+        panel.border= element_blank(),
+        panel.grid = element_blank(),
+        axis.line.x = element_line(),
+        axis.line.y = element_line())
 
 p_b <- 
   ggplot(data = dat, aes(factor(y2), x2)) + 
@@ -145,10 +149,15 @@ p_b <-
   geom_boxplot(outlier.shape = NA) +
   scale_x_discrete(labels = c("Small", "Medium\nEdge", "Medium\nInterior",
                               "Large\nEdge", "Large\nInterior", "Control")) +
+  scale_y_continuous(breaks = seq(0, 3, .5), limits = c(0, 3)) +
   labs(title = "b") +
-  theme_classic() +
+  theme_bw() +
   theme(axis.title = element_blank(), 
-        plot.title = element_text(hjust = .99, size = 20)) +
+        plot.title = element_text(hjust = .99, size = 20, margin = margin(b = -20)),
+        panel.border= element_blank(),
+        panel.grid = element_blank(),
+        axis.line.x = element_line(),
+        axis.line.y = element_line()) +
   coord_cartesian(ylim = c(0 ,3)) +
   annotate("text", x = 1:6, y = 2.9, 
            label = c("*", "*", "**", "*", "***", ""), size = 12) 
