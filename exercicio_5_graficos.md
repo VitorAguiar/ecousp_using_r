@@ -158,7 +158,7 @@ figura:**
 
     p_b <- 
       ggplot(data = dat, aes(factor(y2), x2)) + 
-      stat_boxplot(geom ='errorbar') + 
+      stat_boxplot(geom = "errorbar") +
       geom_boxplot(outlier.shape = NA) +
       scale_x_discrete(labels = c("Small", "Medium\nEdge", "Medium\nInterior",
                                   "Large\nEdge", "Large\nInterior", "Control")) +
@@ -171,7 +171,6 @@ figura:**
             panel.grid = element_blank(),
             axis.line.x = element_line(),
             axis.line.y = element_line()) +
-      coord_cartesian(ylim = c(0 ,3)) +
       annotate("text", x = 1:6, y = 2.9, 
                label = c("*", "*", "**", "*", "***", ""), size = 12) 
 
