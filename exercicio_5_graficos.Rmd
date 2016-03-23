@@ -41,7 +41,8 @@ p
 **2. Marcações do eixos (ticks) para dentro da área do gráfico**
 
 ```{r fig.align='center'}
-p + 
+p <- 
+  p + 
   theme_bw() + 
   theme(axis.ticks.length=unit(-8, "points"), 
         axis.text.x = element_text(margin = margin(t = 10)),
@@ -52,12 +53,12 @@ p +
 **3. Apenas dois eixos (formato “L”)**
 
 ```{r fig.align='center'}
+# there's a bug in theme_classic in ggplot2 2.1. Workaround:
+
 p <- p + 
-  theme_bw() + 
-  theme_classic() +
-  theme(axis.ticks.length = unit(-8, "points"), 
-        axis.text.x = element_text(margin = margin(t = 10)),
-        axis.text.y = element_text(margin = margin(r = 10)))
+  theme(panel.border= element_blank(),
+        axis.line.x = element_line(),
+        axis.line.y = element_line())
 
 p
 ```

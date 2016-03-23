@@ -42,22 +42,21 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
 
 **2. Marcações do eixos (ticks) para dentro da área do gráfico**
 
-    p + 
+    p <- 
+      p + 
       theme_bw() + 
       theme(axis.ticks.length=unit(-8, "points"), 
             axis.text.x = element_text(margin = margin(t = 10)),
             axis.text.y = element_text(margin = margin(r = 10)))
 
-<img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-4-1.png" title="" alt="" style="display: block; margin: auto;" />
-
 **3. Apenas dois eixos (formato “L”)**
 
+    # there's a bug in theme_classic in ggplot2 2.1. Workaround:
+
     p <- p + 
-      theme_bw() + 
-      theme_classic() +
-      theme(axis.ticks.length = unit(-8, "points"), 
-            axis.text.x = element_text(margin = margin(t = 10)),
-            axis.text.y = element_text(margin = margin(r = 10)))
+      theme(panel.border= element_blank(),
+            axis.line.x = element_line(),
+            axis.line.y = element_line())
 
     p
 
@@ -184,36 +183,36 @@ Esse documento foi gerado com os seguintes pacotes:
 
     Packages ------------------------------------------------------------------
 
-     package      * version date       source        
-     acepack        1.3-3.3 2014-11-24 CRAN (R 3.2.2)
-     cluster        2.0.3   2015-07-21 CRAN (R 3.2.1)
-     colorspace     1.2-6   2015-03-11 CRAN (R 3.2.1)
-     devtools       1.10.0  2016-01-23 CRAN (R 3.2.3)
-     digest         0.6.9   2016-01-08 CRAN (R 3.2.3)
-     evaluate       0.8.3   2016-03-05 CRAN (R 3.2.3)
-     foreign        0.8-66  2015-08-19 CRAN (R 3.2.1)
-     formatR        1.2.1   2015-09-18 CRAN (R 3.2.1)
-     Formula        1.2-1   2015-04-07 CRAN (R 3.2.2)
-     ggplot2      * 2.1.0   2016-03-01 CRAN (R 3.2.3)
-     gridExtra      2.2.1   2016-02-29 CRAN (R 3.2.3)
-     gtable         0.2.0   2016-02-26 CRAN (R 3.2.3)
-     Hmisc          3.17-2  2016-02-21 CRAN (R 3.2.3)
-     htmltools      0.2.6   2014-09-08 CRAN (R 3.2.1)
-     knitr          1.12.3  2016-01-22 CRAN (R 3.2.3)
-     labeling       0.3     2014-08-23 CRAN (R 3.2.1)
-     lattice        0.20-33 2015-07-14 CRAN (R 3.2.1)
-     latticeExtra   0.6-26  2013-08-15 CRAN (R 3.2.2)
-     magrittr       1.5     2014-11-22 CRAN (R 3.2.1)
-     memoise        1.0.0   2016-01-29 CRAN (R 3.2.3)
-     munsell        0.4.3   2016-02-13 CRAN (R 3.2.3)
-     nnet           7.3-11  2015-08-30 CRAN (R 3.2.1)
-     plyr           1.8.3   2015-06-12 CRAN (R 3.1.1)
-     RColorBrewer   1.1-2   2014-12-07 CRAN (R 3.2.1)
-     Rcpp           0.12.3  2016-01-10 CRAN (R 3.2.3)
-     rmarkdown      0.9.5   2016-02-22 CRAN (R 3.2.3)
-     rpart          4.1-10  2015-06-29 CRAN (R 3.2.1)
-     scales         0.4.0   2016-02-26 CRAN (R 3.2.3)
-     stringi        1.0-1   2015-10-22 CRAN (R 3.2.2)
-     stringr        1.0.0   2015-04-30 CRAN (R 3.2.1)
-     survival       2.38-3  2015-07-02 CRAN (R 3.2.1)
+     package      * version date       source                         
+     acepack        1.3-3.3 2014-11-24 CRAN (R 3.2.2)                 
+     cluster        2.0.3   2015-07-21 CRAN (R 3.2.1)                 
+     colorspace     1.2-6   2015-03-11 CRAN (R 3.2.1)                 
+     devtools       1.10.0  2016-01-23 CRAN (R 3.2.3)                 
+     digest         0.6.9   2016-01-08 CRAN (R 3.2.3)                 
+     evaluate       0.8.3   2016-03-05 CRAN (R 3.2.3)                 
+     foreign        0.8-66  2015-08-19 CRAN (R 3.2.1)                 
+     formatR        1.2.1   2015-09-18 CRAN (R 3.2.1)                 
+     Formula        1.2-1   2015-04-07 CRAN (R 3.2.2)                 
+     ggplot2      * 2.1.0   2016-03-23 Github (hadley/ggplot2@59c503b)
+     gridExtra      2.2.1   2016-02-29 CRAN (R 3.2.3)                 
+     gtable         0.2.0   2016-02-26 CRAN (R 3.2.3)                 
+     Hmisc          3.17-2  2016-02-21 CRAN (R 3.2.3)                 
+     htmltools      0.2.6   2014-09-08 CRAN (R 3.2.1)                 
+     knitr          1.12.3  2016-01-22 CRAN (R 3.2.3)                 
+     labeling       0.3     2014-08-23 CRAN (R 3.2.1)                 
+     lattice        0.20-33 2015-07-14 CRAN (R 3.2.1)                 
+     latticeExtra   0.6-26  2013-08-15 CRAN (R 3.2.2)                 
+     magrittr       1.5     2014-11-22 CRAN (R 3.2.1)                 
+     memoise        1.0.0   2016-01-29 CRAN (R 3.2.3)                 
+     munsell        0.4.3   2016-02-13 CRAN (R 3.2.3)                 
+     nnet           7.3-11  2015-08-30 CRAN (R 3.2.1)                 
+     plyr           1.8.3   2015-06-12 CRAN (R 3.1.1)                 
+     RColorBrewer   1.1-2   2014-12-07 CRAN (R 3.2.1)                 
+     Rcpp           0.12.3  2016-01-10 CRAN (R 3.2.3)                 
+     rmarkdown      0.9.5   2016-02-22 CRAN (R 3.2.3)                 
+     rpart          4.1-10  2015-06-29 CRAN (R 3.2.1)                 
+     scales         0.4.0   2016-02-26 CRAN (R 3.2.3)                 
+     stringi        1.0-1   2015-10-22 CRAN (R 3.2.2)                 
+     stringr        1.0.0   2015-04-30 CRAN (R 3.2.1)                 
+     survival       2.38-3  2015-07-02 CRAN (R 3.2.1)                 
      yaml           2.1.13  2014-06-12 CRAN (R 3.2.1)
