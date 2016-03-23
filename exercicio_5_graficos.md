@@ -22,9 +22,6 @@ construa os seguintes gráficos:
 ### 5.1 Editando alguns parâmetros gráficos
 
     library(ggplot2)
-
-    ## Warning: package 'ggplot2' was built under R version 3.2.4
-
     library(grid)
 
 Crie um gráfico de dispersão entre `dap` e `ht` com:
