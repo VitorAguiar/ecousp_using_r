@@ -75,7 +75,7 @@ Crie um gráfico de dispersão entre `dap` e `ht` com:
 
 <img src="exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-7-1.png" title="" alt="" style="display: block; margin: auto;" />
 
-### Dois gráficos juntos
+### 5.2 Dois gráficos juntos
 
 **1. Use as variáveis “dap” e “talhao” para construir dois gráficos,
 colocando-os lado a lado. O primeiro deve ser um gráfico de desenho de

@@ -75,7 +75,7 @@ p + theme(axis.title = element_text(size = 18),
           axis.text = element_text(size = 14))
 ```
 
-### Dois gráficos juntos
+### 5.2 Dois gráficos juntos
 
 **1. Use as variáveis “dap” e “talhao” para construir dois gráficos, colocando-os lado a lado. O primeiro deve ser um gráfico de desenho de caixa (boxplot) da variável “dap” em função do fator “talhão”. O segundo deve ter apenas a média e uma barra de desvio-padrão do dap, para cada talhão.**
    
