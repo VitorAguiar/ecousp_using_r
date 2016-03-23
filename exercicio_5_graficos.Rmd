@@ -84,7 +84,7 @@ Dica: vocês terão que calcular a média e os desvios-padrão do dap das árvor
 *Com o ggplot2, não é necessário pré-computar a média e o desvio padrão, `stat_summary` faz isso pra você!*
 *Mas no gráfico `p_media_desvio` é necessário ter o pacote `Hmisc` instalado para usar a função `mean_sdl`.*
 
-```{r fig.width = 10, fig.height = 6}
+```{r fig.width = 10, fig.height = 6, warning=FALSE, message=FALSE}
 p_box <- 
   ggplot(esaligna, aes(factor(talhao), dap)) +
   geom_boxplot() +

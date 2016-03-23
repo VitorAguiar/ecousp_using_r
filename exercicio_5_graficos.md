@@ -23,7 +23,7 @@ construa os seguintes gráficos:
 
     library(ggplot2)
 
-    ## Warning: package 'ggplot2' was built under R version 3.2.3
+    ## Warning: package 'ggplot2' was built under R version 3.2.4
 
     library(grid)
 
@@ -110,13 +110,7 @@ necessário ter o pacote `Hmisc` instalado para usar a função
     print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
     print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 
-    ## Warning: replacing previous import by 'ggplot2::unit' when loading 'Hmisc'
-
-    ## Warning: replacing previous import by 'ggplot2::arrow' when loading 'Hmisc'
-
-    ## Warning: replacing previous import by 'scales::alpha' when loading 'Hmisc'
-
-![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-8-1.png)<!-- -->
 
 **2. Insira também uma letra para dizer qual é o gráfico “a” e qual é o
 “b” (tanto faz, quem é um e quem é outro).**
@@ -135,7 +129,7 @@ necessário ter o pacote `Hmisc` instalado para usar a função
     print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
     print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 
-![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-9-1.png)<!-- -->
 
 ### 5.3 Adivinhando o código
 
@@ -173,7 +167,7 @@ figura:**
     print(p_a, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
     print(p_b, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 
-![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-10-1.png)<!-- -->
 
 Esse documento foi gerado com os seguintes pacotes:
 
@@ -194,32 +188,31 @@ Esse documento foi gerado com os seguintes pacotes:
      acepack        1.3-3.3    2014-11-24 CRAN (R 3.2.0)              
      cluster        2.0.3      2015-07-21 CRAN (R 3.2.0)              
      colorspace     1.2-6      2015-03-11 CRAN (R 3.2.0)              
-     devtools       1.9.1      2015-09-11 CRAN (R 3.2.0)              
+     devtools       1.10.0     2016-01-23 CRAN (R 3.2.3)              
      digest         0.6.9      2016-01-08 CRAN (R 3.2.3)              
-     evaluate       0.8        2015-09-18 CRAN (R 3.2.0)              
+     evaluate       0.8.3      2016-03-05 CRAN (R 3.2.4)              
      foreign        0.8-66     2015-08-19 CRAN (R 3.2.0)              
      formatR        1.2.1      2015-09-18 CRAN (R 3.2.0)              
      Formula        1.2-1      2015-04-07 CRAN (R 3.2.0)              
-     ggplot2      * 2.0.0      2015-12-18 CRAN (R 3.2.3)              
-     gridExtra      2.0.0      2015-07-14 CRAN (R 3.2.0)              
-     gtable         0.1.2      2012-12-05 CRAN (R 3.2.0)              
-     Hmisc          3.17-0     2015-09-21 CRAN (R 3.2.0)              
-     htmltools      0.2.6      2014-09-08 CRAN (R 3.2.0)              
-     knitr          1.11       2015-08-14 CRAN (R 3.2.1)              
+     ggplot2      * 2.1.0      2016-03-01 CRAN (R 3.2.4)              
+     gridExtra      2.2.1      2016-02-29 CRAN (R 3.2.4)              
+     gtable         0.2.0      2016-02-26 CRAN (R 3.2.3)              
+     Hmisc          3.17-2     2016-02-21 CRAN (R 3.2.3)              
+     htmltools      0.3.5      2016-03-21 CRAN (R 3.2.4)              
+     knitr          1.12.3     2016-01-22 CRAN (R 3.2.3)              
      labeling       0.3        2014-08-23 CRAN (R 3.2.0)              
      lattice        0.20-33    2015-07-14 CRAN (R 3.2.0)              
      latticeExtra   0.6-26     2013-08-15 CRAN (R 3.2.0)              
      magrittr       1.5        2014-11-22 CRAN (R 3.2.0)              
-     memoise        0.2.1      2014-04-22 CRAN (R 3.2.0)              
-     munsell        0.4.2      2013-07-11 CRAN (R 3.2.0)              
+     memoise        1.0.0      2016-01-29 CRAN (R 3.2.3)              
+     munsell        0.4.3      2016-02-13 CRAN (R 3.2.3)              
      nnet           7.3-11     2015-08-30 CRAN (R 3.2.0)              
      plyr           1.8.3.9000 2015-10-24 Github (hadley/plyr@9d8294e)
-     proto          0.3-10     2012-12-22 CRAN (R 3.2.0)              
      RColorBrewer   1.1-2      2014-12-07 CRAN (R 3.2.0)              
      Rcpp           0.12.3     2016-01-10 CRAN (R 3.2.3)              
-     rmarkdown      0.8.1      2015-10-10 CRAN (R 3.2.1)              
+     rmarkdown      0.9.5      2016-02-22 CRAN (R 3.2.3)              
      rpart          4.1-10     2015-06-29 CRAN (R 3.2.0)              
-     scales         0.3.0      2015-08-25 CRAN (R 3.2.0)              
+     scales         0.4.0      2016-02-26 CRAN (R 3.2.3)              
      stringi        1.0-1      2015-10-22 CRAN (R 3.2.0)              
      stringr        1.0.0      2015-04-30 CRAN (R 3.2.0)              
      survival       2.38-3     2015-07-02 CRAN (R 3.2.0)              
