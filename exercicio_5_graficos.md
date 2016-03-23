@@ -107,7 +107,7 @@ necessário ter o pacote `Hmisc` instalado para usar a função
     print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
     print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 
-![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-8-1.png)<!-- -->
+![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
 **2. Insira também uma letra para dizer qual é o gráfico “a” e qual é o
 “b” (tanto faz, quem é um e quem é outro).**
@@ -126,7 +126,7 @@ necessário ter o pacote `Hmisc` instalado para usar a função
     print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
     print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 
-![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-9-1.png)<!-- -->
+![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
 ### 5.3 Adivinhando o código
 
@@ -164,7 +164,7 @@ figura:**
     print(p_a, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
     print(p_b, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 
-![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-10-1.png)<!-- -->
+![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-10-1.png)
 
 Esse documento foi gerado com os seguintes pacotes:
 
