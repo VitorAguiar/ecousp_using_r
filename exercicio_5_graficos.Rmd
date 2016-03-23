@@ -88,13 +88,13 @@ Dica: vocês terão que calcular a média e os desvios-padrão do dap das árvor
 p_box <- 
   ggplot(esaligna, aes(factor(talhao), dap)) +
   geom_boxplot() +
-  xlab("talhao")
+  labs(x = "talhao")
   
 p_media_desvio <-
   ggplot(esaligna, aes(factor(talhao), dap)) + 
   stat_summary(fun.y = "mean", geom = "point", size = 5) +
   stat_summary(fun.data = "mean_sdl", geom = "errorbar", width = 0.5) +
-  xlab("talhao")
+  labs(x = "talhao")
 
 pushViewport(viewport(layout = grid.layout(1, 2)))
 print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
@@ -129,10 +129,8 @@ dat <- read.csv("http://ecologia.ib.usp.br/bie5782/lib/exe/fetch.php?media=bie57
 p_a <- 
   ggplot(data = dat, aes(x1, y1)) + 
   geom_point(size = 3, shape = 17) + 
-  geom_smooth(method = "lm", se = FALSE, color = "black") +
-  xlab("Log(Patch size)(ha)") +
-  ylab("Euclidean distances") + 
-  labs(title = "a") + 
+  geom_smooth(method = lm, se = FALSE, color = "black") +
+  labs(title = "a", x = "Log(Patch size)(ha)", y = "Euclidean distances") + 
   theme_classic() +
   theme(plot.title = element_text(hjust = .99, size = 20)) +
   coord_cartesian(ylim = c(0, 3))
@@ -141,17 +139,23 @@ p_b <-
   ggplot(data = dat, aes(factor(y2), x2)) + 
   stat_boxplot(geom ='errorbar') + 
   geom_boxplot(outlier.shape = NA) +
-  scale_x_discrete(labels=c("Small", "Medium\nEdge", "Medium\nInterior",
-                            "Large\nEdge", "Large\nInterior", "Control")) +
+  scale_x_discrete(labels = c("Small", "Medium\nEdge", "Medium\nInterior",
+                              "Large\nEdge", "Large\nInterior", "Control")) +
   labs(title = "b") +
   theme_classic() +
   theme(axis.title = element_blank(), 
         plot.title = element_text(hjust = .99, size = 20)) +
   coord_cartesian(ylim = c(0 ,3)) +
-  annotate("text", x = 1:6, y = 2.9, label = c("*", "*", "**", "*", "***", ""), 
-           size = 12) 
+  annotate("text", x = 1:6, y = 2.9, 
+           label = c("*", "*", "**", "*", "***", ""), size = 12) 
 
 pushViewport(viewport(layout = grid.layout(1, 2)))
 print(p_a, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
 print(p_b, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+```
+
+Esse documento foi gerado com os seguintes pacotes:
+
+```{r comment='', echo=FALSE}
+devtools::session_info()
 ```

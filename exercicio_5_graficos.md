@@ -22,6 +22,9 @@ construa os seguintes gráficos:
 ### 5.1 Editando alguns parâmetros gráficos
 
     library(ggplot2)
+
+    ## Warning: package 'ggplot2' was built under R version 3.2.3
+
     library(grid)
 
 Crie um gráfico de dispersão entre `dap` e `ht` com:
@@ -95,17 +98,23 @@ necessário ter o pacote `Hmisc` instalado para usar a função
     p_box <- 
       ggplot(esaligna, aes(factor(talhao), dap)) +
       geom_boxplot() +
-      xlab("talhao")
+      labs(x = "talhao")
       
     p_media_desvio <-
       ggplot(esaligna, aes(factor(talhao), dap)) + 
       stat_summary(fun.y = "mean", geom = "point", size = 5) +
       stat_summary(fun.data = "mean_sdl", geom = "errorbar", width = 0.5) +
-      xlab("talhao")
+      labs(x = "talhao")
 
     pushViewport(viewport(layout = grid.layout(1, 2)))
     print(p_box, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
     print(p_media_desvio, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+
+    ## Warning: replacing previous import by 'ggplot2::unit' when loading 'Hmisc'
+
+    ## Warning: replacing previous import by 'ggplot2::arrow' when loading 'Hmisc'
+
+    ## Warning: replacing previous import by 'scales::alpha' when loading 'Hmisc'
 
 ![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
@@ -140,10 +149,8 @@ figura:**
     p_a <- 
       ggplot(data = dat, aes(x1, y1)) + 
       geom_point(size = 3, shape = 17) + 
-      geom_smooth(method = "lm", se = FALSE, color = "black") +
-      xlab("Log(Patch size)(ha)") +
-      ylab("Euclidean distances") + 
-      labs(title = "a") + 
+      geom_smooth(method = lm, se = FALSE, color = "black") +
+      labs(title = "a", x = "Log(Patch size)(ha)", y = "Euclidean distances") + 
       theme_classic() +
       theme(plot.title = element_text(hjust = .99, size = 20)) +
       coord_cartesian(ylim = c(0, 3))
@@ -152,18 +159,68 @@ figura:**
       ggplot(data = dat, aes(factor(y2), x2)) + 
       stat_boxplot(geom ='errorbar') + 
       geom_boxplot(outlier.shape = NA) +
-      scale_x_discrete(labels=c("Small", "Medium\nEdge", "Medium\nInterior",
-                                "Large\nEdge", "Large\nInterior", "Control")) +
+      scale_x_discrete(labels = c("Small", "Medium\nEdge", "Medium\nInterior",
+                                  "Large\nEdge", "Large\nInterior", "Control")) +
       labs(title = "b") +
       theme_classic() +
       theme(axis.title = element_blank(), 
             plot.title = element_text(hjust = .99, size = 20)) +
       coord_cartesian(ylim = c(0 ,3)) +
-      annotate("text", x = 1:6, y = 2.9, label = c("*", "*", "**", "*", "***", ""), 
-               size = 12) 
+      annotate("text", x = 1:6, y = 2.9, 
+               label = c("*", "*", "**", "*", "***", ""), size = 12) 
 
     pushViewport(viewport(layout = grid.layout(1, 2)))
     print(p_a, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
     print(p_b, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 
 ![](exercicio_5_graficos_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+
+Esse documento foi gerado com os seguintes pacotes:
+
+    Session info --------------------------------------------------------------
+
+     setting  value                       
+     version  R version 3.2.1 (2015-06-18)
+     system   x86_64, darwin13.4.0        
+     ui       X11                         
+     language (EN)                        
+     collate  en_US.UTF-8                 
+     tz       America/Sao_Paulo           
+     date     2016-03-23                  
+
+    Packages ------------------------------------------------------------------
+
+     package      * version    date       source                      
+     acepack        1.3-3.3    2014-11-24 CRAN (R 3.2.0)              
+     cluster        2.0.3      2015-07-21 CRAN (R 3.2.0)              
+     colorspace     1.2-6      2015-03-11 CRAN (R 3.2.0)              
+     devtools       1.9.1      2015-09-11 CRAN (R 3.2.0)              
+     digest         0.6.9      2016-01-08 CRAN (R 3.2.3)              
+     evaluate       0.8        2015-09-18 CRAN (R 3.2.0)              
+     foreign        0.8-66     2015-08-19 CRAN (R 3.2.0)              
+     formatR        1.2.1      2015-09-18 CRAN (R 3.2.0)              
+     Formula        1.2-1      2015-04-07 CRAN (R 3.2.0)              
+     ggplot2      * 2.0.0      2015-12-18 CRAN (R 3.2.3)              
+     gridExtra      2.0.0      2015-07-14 CRAN (R 3.2.0)              
+     gtable         0.1.2      2012-12-05 CRAN (R 3.2.0)              
+     Hmisc          3.17-0     2015-09-21 CRAN (R 3.2.0)              
+     htmltools      0.2.6      2014-09-08 CRAN (R 3.2.0)              
+     knitr          1.11       2015-08-14 CRAN (R 3.2.1)              
+     labeling       0.3        2014-08-23 CRAN (R 3.2.0)              
+     lattice        0.20-33    2015-07-14 CRAN (R 3.2.0)              
+     latticeExtra   0.6-26     2013-08-15 CRAN (R 3.2.0)              
+     magrittr       1.5        2014-11-22 CRAN (R 3.2.0)              
+     memoise        0.2.1      2014-04-22 CRAN (R 3.2.0)              
+     munsell        0.4.2      2013-07-11 CRAN (R 3.2.0)              
+     nnet           7.3-11     2015-08-30 CRAN (R 3.2.0)              
+     plyr           1.8.3.9000 2015-10-24 Github (hadley/plyr@9d8294e)
+     proto          0.3-10     2012-12-22 CRAN (R 3.2.0)              
+     RColorBrewer   1.1-2      2014-12-07 CRAN (R 3.2.0)              
+     Rcpp           0.12.3     2016-01-10 CRAN (R 3.2.3)              
+     rmarkdown      0.8.1      2015-10-10 CRAN (R 3.2.1)              
+     rpart          4.1-10     2015-06-29 CRAN (R 3.2.0)              
+     scales         0.3.0      2015-08-25 CRAN (R 3.2.0)              
+     stringi        1.0-1      2015-10-22 CRAN (R 3.2.0)              
+     stringr        1.0.0      2015-04-30 CRAN (R 3.2.0)              
+     survival       2.38-3     2015-07-02 CRAN (R 3.2.0)              
+     yaml           2.1.13     2014-06-12 CRAN (R 3.2.0)
