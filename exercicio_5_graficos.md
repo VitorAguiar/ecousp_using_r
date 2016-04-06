@@ -146,7 +146,7 @@ figura:**
       ggplot(data = dat, aes(x1, y1)) + 
       geom_point(size = 3, shape = 17) + 
       geom_smooth(method = lm, se = FALSE, color = "black") +
-      scale_x_continuous(breaks = seq(.5, 2, .5), limits = c(0.5, 2.5)) +
+      scale_x_continuous(breaks = seq(.5, 2, .5), limits = c(0.5, 2.3)) +
       scale_y_continuous(breaks = seq(0, 3, .5), limits = c(0, 3)) +
       labs(title = "a", x = "Log(Patch size)(ha)", y = "Euclidean distances") + 
       theme_bw() +
@@ -191,7 +191,7 @@ Esse documento foi gerado com os seguintes pacotes:
      language (EN)                        
      collate  en_US.UTF-8                 
      tz       <NA>                        
-     date     2016-03-23                  
+     date     2016-04-05                  
 
     Packages ------------------------------------------------------------------
 
@@ -220,7 +220,7 @@ Esse documento foi gerado com os seguintes pacotes:
      nnet           7.3-11  2015-08-30 CRAN (R 3.2.1)                 
      plyr           1.8.3   2015-06-12 CRAN (R 3.1.1)                 
      RColorBrewer   1.1-2   2014-12-07 CRAN (R 3.2.1)                 
-     Rcpp           0.12.3  2016-01-10 CRAN (R 3.2.3)                 
+     Rcpp           0.12.4  2016-03-26 CRAN (R 3.2.3)                 
      rmarkdown      0.9.5   2016-02-22 CRAN (R 3.2.3)                 
      rpart          4.1-10  2015-06-29 CRAN (R 3.2.1)                 
      scales         0.4.0   2016-02-26 CRAN (R 3.2.3)                 
