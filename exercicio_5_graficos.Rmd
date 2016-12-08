@@ -1,10 +1,7 @@
 ---
 title: "Exercicio 5"
 author: "Vitor Aguiar"
-date: "March 22, 2016"
-output: 
-    md_document:
-    variant: github_markdown
+output: github_document
 ---
 
 **[Exercicios 5 - Criação de Gráficos](http://ecologia.ib.usp.br/bie5782/doku.php?id=bie5782:01_curso_atual:exercicios5)**
@@ -54,13 +51,13 @@ p
 **3. Apenas dois eixos (formato “L”)**
 
 ```{r fig.align='center'}
-# there's a bug in theme_classic in ggplot2 2.1. Workaround:
 
-p <- p + 
-  theme(panel.border= element_blank(),
-        panel.grid = element_blank(),
-        axis.line.x = element_line(),
-        axis.line.y = element_line())
+p <- 
+  p + 
+  theme_classic() +
+  theme(axis.ticks.length=unit(-8, "points"), 
+        axis.text.x = element_text(margin = margin(t = 10)),
+        axis.text.y = element_text(margin = margin(r = 10)))
 
 p
 ```
