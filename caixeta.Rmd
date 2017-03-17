@@ -1,0 +1,70 @@
+---
+output: github_document
+---
+
+```{r, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(comment = "", warning = FALSE, message = FALSE)
+```
+
+Vou usar o pacote `dplyr` para manipular o dado:
+```{r message=FALSE}
+library(dplyr)
+library(readr)
+
+caixeta <- 
+  "http://ecologia.ib.usp.br/bie5782/lib/exe/fetch.php?media=dados:caixeta.csv" %>%
+  read_csv() %>%
+  arrange(local, arvore, fuste)
+
+caixeta
+```
+
+### Espécies
+
+Vamos checar se uma mesma árvore (mesmo `local` e `arvore`) pode estar com 
+valores de `especie` diferentes no dado `caixeta`.
+```{r}
+caixeta %>%
+  group_by(local, arvore) %>%
+  filter(n_distinct(especie) > 1)
+```  
+
+De fato, vemos que há 2 árvores classificadas em 2 espécies diferentes.
+
+### Alturas
+
+Será que uma mesma árvore pode estar com valores de altura (`h`) diferentes?
+```{r}
+caixeta %>%
+  group_by(local, arvore) %>%
+  filter(n_distinct(h) > 1)
+```
+
+De fato, podemos observar que há 3 árvores com 2 valores diferentes para altura.
+
+Em alguns fustes, elas tem valores de `h` diferentes. Já havíamos visto a árvore 117 do local _jureia_ no problema das espécies. A árvore 26 do local _retiro_ tem um `h` diferente para o fuste 7. Já a árvore 28 do local _retiro_ tem 2 entradas para os fustes 1 e 2, mas com 
+valores de `h` diferentes.
+
+### Visualização
+
+Ao plotar a `cap` pela `h`, percebemos que há valores muito extremos:
+```{r plot}
+library(ggplot2)
+
+ggplot(caixeta, aes(cap, h)) + 
+  geom_point(alpha = 1/2)
+```
+
+Checando os valores mais extremos para `cap`:
+```{r}
+caixeta %>%
+  arrange(desc(cap))
+```
+
+Vamos também checar os valores extremos de `h`:
+```{r}
+caixeta %>%
+  arrange(desc(h))
+```
+
+Parecem OK?
